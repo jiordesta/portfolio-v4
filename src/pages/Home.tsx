@@ -2,13 +2,8 @@ import { useState } from "react";
 
 export default function Home() {
   const ResumeBtn = () => {
-    const [hovered, setHovered] = useState(false);
     return (
-      <button
-        className="p-1 flex items-center rounded-full drop-shadow-lg bg-color2 bg-opacity-25"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
+      <button className="p-1 flex items-center rounded-full drop-shadow-lg bg-color2 bg-opacity-25">
         <div>
           <img
             src="/icons/resume.svg"
