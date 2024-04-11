@@ -20,8 +20,8 @@ export default function About() {
           </p>
         </div>
         <div
-          className={`w-full md:${
-            isHovered ? "w-[85%]" : "w-[35%]"
+          className={`w-full ${
+            isHovered ? "md:w-full" : "md:w-[35%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
@@ -41,8 +41,8 @@ export default function About() {
     return (
       <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden">
         <div
-          className={`w-full md:${
-            isHovered ? "w-[85%]" : "w-[35%]"
+          className={`w-full ${
+            isHovered ? "md:w-full" : "md:w-[35%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
@@ -89,8 +89,8 @@ export default function About() {
           </p>
         </div>
         <div
-          className={`w-full md:${
-            isHovered ? "w-[85%]" : "w-[35%]"
+          className={`w-full ${
+            isHovered ? "md:w-full" : "md:w-[35%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
@@ -110,8 +110,8 @@ export default function About() {
     return (
       <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden">
         <div
-          className={`w-full md:${
-            isHovered ? "w-[85%]" : "w-[35%]"
+          className={`w-full ${
+            isHovered ? "md:w-full" : "md:w-[35%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
