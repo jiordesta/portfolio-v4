@@ -1,0 +1,41 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+  :root {
+    @apply font-mono bg-color1 text-color4;
+  }
+}
+
+.glowText {
+  text-shadow: 0 0 10px;
+}
+
+.glowBox {
+  box-shadow: 0 0 10px #00adb5;
+}
+
+.navlink {
+  transition: opacity 0.3s ease-in-out;
+}
+.navcontainer:hover > :not(:hover) {
+  opacity: 0.25;
+}
+
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #222831;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #393e46;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #eeeeee;
+}
