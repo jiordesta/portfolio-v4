@@ -9,8 +9,8 @@ export default function Projects() {
     const [linkHover, setLinkHover] = useState(false);
     return (
       <div
-        className={`h-[500px] bg-color2 rounded-xl ${
-          hovered ? "p-1 bg-opacity-5 glowBox" : "p-2 bg-opacity-25"
+        className={`h-[450px] bg-color2 rounded-xl ${
+          hovered ? "p-1 bg-opacity-5" : "p-2 bg-opacity-25"
         } drop-shadow-lg transition-all ease-in-out duration-300 cursor-pointer`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -38,7 +38,7 @@ export default function Projects() {
                 <div
                   className={`bg-color2 bg-opacity-25 rounded-full flex gap-2 p-1 pe-3 drop-shadow-lg ${
                     gitHover && "glowBox"
-                  } transition-all ease-in-out duration-500 cursor-pointer`}
+                  } transition-all ease-in-out duration-400 cursor-pointer`}
                   onMouseEnter={() => setGitHover(true)}
                   onMouseLeave={() => setGitHover(false)}
                 >
@@ -57,7 +57,7 @@ export default function Projects() {
                 <div
                   className={`bg-color2 bg-opacity-25 rounded-full flex gap-2 p-1 pe-3 drop-shadow-lg ${
                     linkHover && "glowBox"
-                  } transition-all ease-in-out duration-500 cursor-pointer`}
+                  } transition-all ease-in-out duration-400 cursor-pointer`}
                   onMouseEnter={() => setLinkHover(true)}
                   onMouseLeave={() => setLinkHover(false)}
                 >
@@ -82,7 +82,7 @@ export default function Projects() {
     <section id="projects" className="relative">
       {<ImageLoader sectionId="projects" setLoaded={setLoaded} />}
       <div className="min-h-screen w-full flex flex-col lg:flex-row px-[1rem] gap-4 pb-[6rem]">
-        <ul className="grid gap-[1rem] grid-cols-4">
+        <ul className="grid gap-[1rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <Project />
           <Project />
           <Project />
