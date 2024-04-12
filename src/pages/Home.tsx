@@ -1,4 +1,6 @@
 import { useState } from "react";
+import ImageLoader from "../utils/ImageLoader";
+import { Loading } from "../components/OverlayUIs";
 
 export default function Home() {
   const ResumeBtn = () => {
@@ -103,6 +105,34 @@ export default function Home() {
     );
   };
 
+  interface ImageProgressEvent extends ProgressEvent {
+    lengthComputable: boolean;
+    loaded: number;
+    total: number;
+  }
+
+  const LoadingImage = () => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const handleImageLoad = () => {
+      setImageLoaded(true);
+    };
+
+    const handleOnProgress = (e: ImageProgressEvent) => {
+      if (e.lengthComputable) {
+        const percentage = (e.loaded / e.total) * 100;
+        console.log(Math.round(percentage));
+      }
+    };
+
+    const image = new Image();
+    image.src = "/images/profile.png";
+    image.onload = handleImageLoad;
+    image.onprogress = handleOnProgress;
+
+    if (imageLoaded) return <img src="/images/profile.png" />;
+    return <h1>Loading</h1>;
+  };
+
   const Profile = () => {
     const [hovered, setHovered] = useState(false);
     return (
@@ -119,7 +149,7 @@ export default function Home() {
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
-          <img src="/images/profile.png" className="rounded-lg" alt="" />
+          <img src="/images/profile.png" />
         </div>
         <div className="w-full flex justify-center">
           <div
@@ -182,8 +212,11 @@ export default function Home() {
     );
   };
 
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <section className="relative">
+    <section id="home" className="relative">
+      {<ImageLoader sectionId="home" setLoaded={setLoaded} />}
       <div className="min-h-screen w-full flex flex-col lg:flex-row px-[1rem] pb-[1rem] gap-4">
         <div className="w-full lg:w-[33%] order-2 lg:order-1">
           <OngoingProjects />
@@ -197,6 +230,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {loaded ? null : <Loading />}
     </section>
   );
 }

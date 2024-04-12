@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+export const Loading = () => {
+  return (
+    <div className="fixed inset-0 z-50">
+      <div className="flex justify-center items-center w-full h-full bg-color1">
+        <img src="/loading.svg" width={75} alt="" />
+      </div>
+    </div>
+  );
+};
+
 export const Loader = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 

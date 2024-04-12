@@ -1,11 +1,13 @@
 import { useState } from "react";
+import ImageLoader from "../utils/ImageLoader";
+import { Loading } from "../components/OverlayUIs";
 
 export default function About() {
   const Education = () => {
     const [isHovered, setIsHovered] = useState(false);
     return (
-      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden">
-        <div className="w-full md:w-[65%] flex items-center">
+      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
+        <div className="w-full md:w-[80%] flex items-center">
           <p className="text-center md:text-end">
             I earned my Bachelor of Science in Computer Science from Caraga
             State University, located in Ampayon, Butuan City 8600. On July 22,
@@ -21,7 +23,7 @@ export default function About() {
         </div>
         <div
           className={`w-full ${
-            isHovered ? "md:w-full" : "md:w-[35%]"
+            isHovered ? "md:w-[80%]" : "md:w-[30%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
@@ -39,10 +41,10 @@ export default function About() {
   const Leader = () => {
     const [isHovered, setIsHovered] = useState(false);
     return (
-      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden">
+      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
         <div
           className={`w-full ${
-            isHovered ? "md:w-full" : "md:w-[35%]"
+            isHovered ? "md:w-[80%]" : "md:w-[30%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
@@ -53,7 +55,7 @@ export default function About() {
             alt=""
           />
         </div>
-        <div className="w-full md:w-[65%] flex items-center">
+        <div className="w-full md:w-[80%] flex items-center">
           <p className="text-center md:text-start">
             Led and guided a dedicated thesis team to successful completion,
             demonstrating exceptional leadership skills and fostering a
@@ -73,24 +75,27 @@ export default function About() {
   const Award = () => {
     const [isHovered, setIsHovered] = useState(false);
     return (
-      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden">
-        <div className="w-full md:w-[65%] flex items-center">
+      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
+        <div className="w-full md:w-[80%] flex items-center">
           <p className="text-center md:text-end">
-            I earned my Bachelor of Science in Computer Science from Caraga
-            State University, located in Ampayon, Butuan City 8600. On July 22,
-            2023, I had the immense pleasure of proudly graduating with this
-            degree, marking a significant milestone in my academic journey. This
-            achievement is a testament to my unwavering dedication, hard work,
-            and determination to master the intricacies of the digital world. As
-            a Computer Science graduate, I am eagerly looking forward to
-            embracing the vast array of opportunities that await me, confident
-            in my ability to leave a meaningful impact in the ever-evolving
-            realm of technology.
+            Receiving the prestigious award for best oral presenter at the
+            esteemed 2nd International Conference of Computing and Information
+            Sciences (CIScon) 2023 was a moment of validation and pride in my
+            academic journey. This accolade serves as a testament to the
+            countless hours of dedication and hard work poured into refining my
+            presentation skills and advancing knowledge in the field. At CIScon
+            2023, I had the privilege of engaging with fellow scholars and
+            sharing insights from my research, employing effective communication
+            techniques to captivate the audience and foster meaningful
+            discourse. Winning this award not only affirms the value of my
+            contributions but also inspires me to continue striving for
+            excellence in my academic pursuits, with a renewed sense of purpose
+            and determination.
           </p>
         </div>
         <div
           className={`w-full ${
-            isHovered ? "md:w-full" : "md:w-[35%]"
+            isHovered ? "md:w-[80%]" : "md:w-[30%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
@@ -108,10 +113,10 @@ export default function About() {
   const Internship = () => {
     const [isHovered, setIsHovered] = useState(false);
     return (
-      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden">
+      <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
         <div
           className={`w-full ${
-            isHovered ? "md:w-full" : "md:w-[35%]"
+            isHovered ? "md:w-[80%]" : "md:w-[30%]"
           } transition-all ease-in-out duration-300`}
         >
           <img
@@ -122,17 +127,18 @@ export default function About() {
             alt=""
           />
         </div>
-        <div className="w-full md:w-[65%] flex items-center">
+        <div className="w-full md:w-[80%] flex items-center">
           <p className="text-center md:text-start">
-            Led and guided a dedicated thesis team to successful completion,
-            demonstrating exceptional leadership skills and fostering a
-            collaborative environment that propelled us toward our research
-            objectives. Through effective communication, strategic planning, and
-            adept project management, I ensured that our team remained focused,
-            motivated, and united in achieving our shared academic goal. This
-            leadership resulted in a cohesive team dynamic and a thesis that
-            stands as a testament to our collective efforts and commitment to
-            advancing knowledge in our field.
+            Acknowledged for exemplary performance as an intern through the
+            receipt of a certificate, symbolizing a commendable commitment to
+            exceeding expectations and making substantial contributions to team
+            projects. This recognition reflects a demonstrated work ethic
+            characterized by adaptability, diligence, and a remarkable aptitude
+            for grasping complex tasks swiftly. The certificate serves as
+            tangible evidence of the invaluable contributions made towards the
+            attainment of the organization's objectives, highlighting the
+            significance of dedication, adaptability, and a proactive approach
+            in fostering success within the professional sphere.
           </p>
         </div>
       </div>
@@ -184,8 +190,11 @@ export default function About() {
     );
   };
 
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <section className="relative">
+    <section id="about" className="relative">
+      {<ImageLoader sectionId="about" setLoaded={setLoaded} />}
       <div className="min-h-screen px-[1rem] pb-[6rem] space-y-4">
         <div className="w-full flex flex-col lg:flex-row gap-4">
           <Education />
@@ -199,6 +208,7 @@ export default function About() {
           <Skills />
         </div>
       </div>
+      {loaded ? null : <Loading />}
     </section>
   );
 }
