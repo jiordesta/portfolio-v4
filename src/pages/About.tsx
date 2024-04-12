@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ImageLoader from "../utils/ImageLoader";
 import { Loading } from "../components/OverlayUIs";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function About() {
+  const navigate = useNavigate();
+
   const Education = () => {
-    const [isHovered, setIsHovered] = useState(false);
     return (
       <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
-        <div className="w-full md:w-[80%] flex items-center">
+        <div className="w-full md:w-[70%] flex items-center">
           <p className="text-center md:text-end">
             I earned my Bachelor of Science in Computer Science from Caraga
             State University, located in Ampayon, Butuan City 8600. On July 22,
@@ -21,17 +23,12 @@ export default function About() {
             realm of technology.
           </p>
         </div>
-        <div
-          className={`w-full ${
-            isHovered ? "md:w-[80%]" : "md:w-[30%]"
-          } transition-all ease-in-out duration-300`}
-        >
+        <div className="w-full md:w-[30%] transition-all ease-in-out duration-300">
           <img
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             src="/images/profile.jpg"
-            className="object-cover w-full h-full flex justify-center items-center rounded-lg"
+            className="object-cover w-full h-full flex justify-center items-center rounded-lg cursor-pointer"
             alt=""
+            onClick={() => navigate("/about/profile")}
           />
         </div>
       </div>
@@ -39,23 +36,17 @@ export default function About() {
   };
 
   const Leader = () => {
-    const [isHovered, setIsHovered] = useState(false);
     return (
       <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
-        <div
-          className={`w-full ${
-            isHovered ? "md:w-[80%]" : "md:w-[30%]"
-          } transition-all ease-in-out duration-300`}
-        >
+        <div className="w-full md:w-[30%] transition-all ease-in-out duration-300">
           <img
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             src="/images/leader.jpg"
-            className="object-cover w-full h-full flex justify-center items-center rounded-lg"
+            className="object-cover w-full h-full flex justify-center items-center rounded-lg cursor-pointer"
             alt=""
+            onClick={() => navigate("/about/leader")}
           />
         </div>
-        <div className="w-full md:w-[80%] flex items-center">
+        <div className="w-full md:w-[70%] flex items-center">
           <p className="text-center md:text-start">
             Led and guided a dedicated thesis team to successful completion,
             demonstrating exceptional leadership skills and fostering a
@@ -73,10 +64,9 @@ export default function About() {
   };
 
   const Award = () => {
-    const [isHovered, setIsHovered] = useState(false);
     return (
       <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
-        <div className="w-full md:w-[80%] flex items-center">
+        <div className="w-full md:w-[70%] flex items-center">
           <p className="text-center md:text-end">
             Receiving the prestigious award for best oral presenter at the
             esteemed 2nd International Conference of Computing and Information
@@ -93,17 +83,12 @@ export default function About() {
             and determination.
           </p>
         </div>
-        <div
-          className={`w-full ${
-            isHovered ? "md:w-[80%]" : "md:w-[30%]"
-          } transition-all ease-in-out duration-300`}
-        >
+        <div className="w-full md:w-[30%] transition-all ease-in-out duration-300">
           <img
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             src="/images/award.jpg"
-            className="object-cover w-full h-full flex justify-center items-center rounded-lg"
+            className="object-cover w-full h-full flex justify-center items-center rounded-lg cursor-pointer"
             alt=""
+            onClick={() => navigate("/about/award")}
           />
         </div>
       </div>
@@ -111,23 +96,17 @@ export default function About() {
   };
 
   const Internship = () => {
-    const [isHovered, setIsHovered] = useState(false);
     return (
       <div className="flex flex-col md:flex-row md:h-[500px] gap-8 overflow-hidden w-full">
-        <div
-          className={`w-full ${
-            isHovered ? "md:w-[80%]" : "md:w-[30%]"
-          } transition-all ease-in-out duration-300`}
-        >
+        <div className="w-full md:w-[30%] transition-all ease-in-out duration-300">
           <img
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
             src="/images/internship.jpg"
-            className="object-cover w-full h-full flex justify-center items-center rounded-lg"
+            className="object-cover w-full h-full flex justify-center items-center rounded-lg cursor-pointer"
             alt=""
+            onClick={() => navigate("/about/internship")}
           />
         </div>
-        <div className="w-full md:w-[80%] flex items-center">
+        <div className="w-full md:w-[70%] flex items-center">
           <p className="text-center md:text-start">
             Acknowledged for exemplary performance as an intern through the
             receipt of a certificate, symbolizing a commendable commitment to
@@ -140,6 +119,26 @@ export default function About() {
             significance of dedication, adaptability, and a proactive approach
             in fostering success within the professional sphere.
           </p>
+        </div>
+      </div>
+    );
+  };
+
+  const [src, setsrc] = useState("");
+
+  const ExpandImage = () => {
+    return (
+      <div className="fixed inset-0 w-full h-full flex justify-center items-center bg-black bg-opacity-75 z-40">
+        <div className="w-full md:w-[50%] lg:w-[40%] xl:w-[30%] p-[1rem] md:p-0 relative">
+          <img src={src} className="rounded-lg" alt="" />
+          <div className="absolute top-1 right-1 p-1 rounded-full transition-all ease-in-out duration-300 bg-color2 bg-opacity-25">
+            <img
+              src="/icons/close.svg"
+              onClick={() => navigate("/about")}
+              width={25}
+              alt=""
+            />
+          </div>
         </div>
       </div>
     );
@@ -191,10 +190,27 @@ export default function About() {
   };
 
   const [loaded, setLoaded] = useState(false);
+  const { section } = useParams();
+
+  useEffect(() => {
+    if (section === "profile") {
+      setsrc("/images/profile.jpg");
+    }
+    if (section === "leader") {
+      setsrc("/images/leader.jpg");
+    }
+    if (section === "award") {
+      setsrc("/images/award.jpg");
+    }
+    if (section === "internship") {
+      setsrc("/images/internship.jpg");
+    }
+  }, [section]);
 
   return (
     <section id="about" className="relative">
       {<ImageLoader sectionId="about" setLoaded={setLoaded} />}
+      {section && <ExpandImage />}
       <div className="min-h-screen px-[1rem] pb-[6rem] space-y-4">
         <div className="w-full flex flex-col lg:flex-row gap-4">
           <Education />

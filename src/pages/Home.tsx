@@ -105,34 +105,6 @@ export default function Home() {
     );
   };
 
-  interface ImageProgressEvent extends ProgressEvent {
-    lengthComputable: boolean;
-    loaded: number;
-    total: number;
-  }
-
-  const LoadingImage = () => {
-    const [imageLoaded, setImageLoaded] = useState(false);
-    const handleImageLoad = () => {
-      setImageLoaded(true);
-    };
-
-    const handleOnProgress = (e: ImageProgressEvent) => {
-      if (e.lengthComputable) {
-        const percentage = (e.loaded / e.total) * 100;
-        console.log(Math.round(percentage));
-      }
-    };
-
-    const image = new Image();
-    image.src = "/images/profile.png";
-    image.onload = handleImageLoad;
-    image.onprogress = handleOnProgress;
-
-    if (imageLoaded) return <img src="/images/profile.png" />;
-    return <h1>Loading</h1>;
-  };
-
   const Profile = () => {
     const [hovered, setHovered] = useState(false);
     return (

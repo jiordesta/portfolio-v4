@@ -21,6 +21,7 @@ export default function App() {
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/about" Component={About} />
+          <Route path="/about/:section" Component={About} />
           <Route path="/contacts" Component={Contacts} />
           <Route path="/projects" Component={Projects} />
           <Route path="/resume" Component={Resume} />
