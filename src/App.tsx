@@ -13,7 +13,7 @@ export default function App() {
     <div>
       <Loader />
       <Router>
-        <div className="sticky top-0 flex justify-between z-10">
+        <div className="sticky top-0 flex justify-between z-20">
           <Active />
           <Timer />
         </div>

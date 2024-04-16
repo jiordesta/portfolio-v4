@@ -12,20 +12,24 @@ const ImageLoader = ({ sectionId, setLoaded }: ImageLoaderProps) => {
   useEffect(() => {
     const images = document.getElementById(sectionId)?.querySelectorAll("img");
 
+    const setImagesLoaded = () => {
+      setLoaded(true);
+    };
+
     if (images) {
       images.forEach((image: HTMLImageElement) => {
         total += 1;
         image.onload = () => {
           count += 1;
           if (count >= images?.length) {
-            setLoaded(true);
+            setImagesLoaded();
           }
         };
 
         image.onerror = () => {
           count += 1;
           if (count >= images?.length) {
-            setLoaded(true);
+            setImagesLoaded();
           }
         };
       });

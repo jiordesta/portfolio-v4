@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export const Loading = () => {
   return (
-    <div className="fixed inset-0 z-50">
+    <div className="fixed inset-0 z-10">
       <div className="flex justify-center items-center w-full h-full bg-color1">
         <img src="/loading.svg" width={75} alt="" />
       </div>
@@ -36,7 +36,7 @@ export const Loader = () => {
 
   if (!isLoaded) {
     return (
-      <div className="fixed inset-0 z-50">
+      <div className="fixed inset-0 z-10">
         <div className="flex justify-center items-center w-full h-full bg-color1">
           <img src="/loading.svg" width={75} alt="" />
         </div>
@@ -47,7 +47,7 @@ export const Loader = () => {
 
 export const Active = () => {
   return (
-    <div className="flex justify-start p-[1rem] z-10">
+    <div className="flex justify-start p-[1rem] cursor-default">
       <div className="bg-color2 bg-opacity-25 py-1 px-2 rounded-full drop-shadow-lg">
         <div className="flex gap-1 justify-center items-center">
           <div className="bg-color3 p-1 pulse ripple"></div>
@@ -70,7 +70,7 @@ export const Timer = () => {
   const minutes = Math.floor((seconds % 3600) / 60);
   const remainingSeconds = seconds % 60;
   return (
-    <div className="flex justify-end p-[1rem] z-10">
+    <div className="flex justify-end p-[1rem] cursor-default">
       <div className="bg-color2 bg-opacity-25 py-1 px-2 rounded-full drop-shadow-lg">
         <p>
           {hours.toString().padStart(2, "0")}:
@@ -92,7 +92,7 @@ export const Navigation = () => {
     navigate(`/${path}`);
   };
   return (
-    <nav className="fixed bottom-[1rem] w-full flex justify-center drop-shadow-lg z-10">
+    <nav className="fixed bottom-[1rem] w-full flex justify-center drop-shadow-lg z-20">
       <ul className="flex gap-2 bg-color2 rounded-full p-1 bg-opacity-25 navcontainer">
         <li className="navlink">
           <button

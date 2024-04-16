@@ -20,7 +20,26 @@ export default function Home() {
   };
 
   const OngoingProjects = () => {
-    const Project = () => {
+    const projects = [
+      {
+        status: "ongoing-project",
+        category: "e-commerce",
+        commits: ["added homepage", "display products", "fixed product search"],
+      },
+      {
+        status: "ready-to-deploy",
+        category: "product-marketing",
+        commits: ["added authentication", "homepage", "project initialized"],
+      },
+    ];
+
+    interface projectprops {
+      status: String;
+      category: String;
+      commits: String[];
+    }
+
+    const Project = ({ status, category, commits }: projectprops) => {
       const [hovered, setHovered] = useState(false);
       return (
         <li
@@ -65,25 +84,23 @@ export default function Home() {
               />
             </div>
             <div className="bg-color2 bg-opacity-25 rounded-lg absolute top-[1rem] left-[1rem] px-4 py-2 drop-shadow-lg">
-              <h1 className="">ongoing project</h1>
+              <h1 className="">{status}</h1>
             </div>
             <div className="bg-color2 bg-opacity-25 rounded-lg absolute bottom-[1rem] left-[1rem] px-4 py-2 drop-shadow-lg">
-              <h1>ecommerce</h1>
+              <h1>{category}</h1>
             </div>
             <div className="bg-color2 bg-opacity-25 rounded-lg absolute top-[1rem] right-[1rem] p-1 drop-shadow-lg">
               <img src="/icons/notice.svg" width={25} alt="" />
             </div>
             <div className="absolute bottom-[1rem] right-[1rem] drop-shadow-lg space-y-2">
               <ul className="space-y-1">
-                <li className="flex justify-end">
-                  <div className="">[authentication]</div>
-                </li>
-                <li className="flex justify-end">
-                  <div className="">[fixed bug]</div>
-                </li>
-                <li className="flex justify-end">
-                  <div className="">[added homepage]</div>
-                </li>
+                {commits.map((commit, index) => {
+                  return (
+                    <li key={index} className="flex justify-end">
+                      <div>{`[${commit}]`}</div>
+                    </li>
+                  );
+                })}
               </ul>
               <div className="flex justify-end">
                 <h1 className="bg-color2 bg-opacity-25 rounded-lg px-4 py-2">
@@ -98,8 +115,9 @@ export default function Home() {
     return (
       <div>
         <ul className="flex flex-col md:flex-row lg:flex-col justify-center items-center gap-2 glowText">
-          <Project />
-          <Project />
+          {projects.map((project) => {
+            return <Project {...project} />;
+          })}
         </ul>
       </div>
     );
@@ -108,14 +126,14 @@ export default function Home() {
   const Profile = () => {
     const [hovered, setHovered] = useState(false);
     return (
-      <div className="mx-0 lg:mx-8 space-y-2">
+      <div className="mx-0 lg:mx-8 space-y-2 cursor-default">
         <div className="w-full flex justify-center">
           <div className="bg-color2 bg-opacity-25 drop-shadow-lg rounded-lg px-4 py-2 w-full text-center glowText">
             John Irson Ordesta
           </div>
         </div>
         <div
-          className={`bg-color2 drop-shadow-lg rounded-lg cursor-pointer ${
+          className={`bg-color2 drop-shadow-lg rounded-lg ${
             hovered ? "p-1 bg-opacity-5" : "p-[1rem] bg-opacity-25"
           } transition-all ease-in-out duration-300`}
           onMouseEnter={() => setHovered(true)}
