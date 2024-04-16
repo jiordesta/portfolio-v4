@@ -24,12 +24,16 @@ export default function Home() {
       {
         status: "ongoing-project",
         category: "e-commerce",
-        commits: ["added homepage", "display products", "fixed product search"],
+        commits: [
+          "added homepage",
+          "fixed product search",
+          "project initialized",
+        ],
       },
       {
         status: "ready-to-deploy",
         category: "product-marketing",
-        commits: ["added authentication", "homepage", "project initialized"],
+        commits: ["added authentication", "homepage", "display products"],
       },
     ];
 

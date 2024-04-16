@@ -1,14 +1,51 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Loading } from "../components/OverlayUIs";
 import ImageLoader from "../utils/ImageLoader";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function Projects() {
-  const Project = () => {
+  const navigate = useNavigate();
+  const projects = [
+    {
+      id: "1",
+      name: "RESAYKEL",
+      description:
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum illum deserunt quas? Ratione dignissimos maxime est autem quas officia consequuntur earum necessitatibus reprehenderit, delectus ad.",
+      status: "deployed",
+      repo: {
+        link: "",
+        secured: false,
+      },
+      link: "",
+      img: "/images/resaykel/1.PNG",
+    },
+  ];
+
+  type Project = {
+    id: String;
+    name: String;
+    description: String;
+    status: String;
+    repo: {
+      link: String;
+      secured: boolean;
+    };
+    link: String;
+    img: String;
+  };
+
+  interface projectprops {
+    project: Project;
+  }
+
+  const Project = ({ project }: projectprops) => {
+    const { id, name, description, img } = project;
     const [hovered, setHovered] = useState(false);
     const [gitHover, setGitHover] = useState(false);
     const [linkHover, setLinkHover] = useState(false);
     return (
       <div
+        onClick={() => navigate(`/projects/${id}`)}
         className={`h-[450px] bg-color2 rounded-xl ${
           hovered ? "p-1 bg-opacity-5" : "p-2 bg-opacity-25"
         } drop-shadow-lg transition-all ease-in-out duration-300 cursor-pointer`}
@@ -17,7 +54,7 @@ export default function Projects() {
       >
         <div className="h-[60%]">
           <img
-            src="/images/profile.jpg"
+            src={`${img}`}
             className="object-cover w-full h-full flex justify-center items-center rounded-lg"
             alt=""
           />
@@ -25,13 +62,8 @@ export default function Projects() {
         <div className="h-[40%]">
           <div className="h-full">
             <div className="h-3/4 overflow-hidden">
-              <h1 className="text-2xl font-bold">Sample Project</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Eligendi doloremque debitis voluptatum iusto! Quos consequatur
-                harum facere natus tempora nobis necessitatibus in id ea
-                similique.
-              </p>
+              <h1 className="text-2xl font-bold">{name}</h1>
+              <p>{description}</p>
             </div>
             <div className="h-1/4 flex justify-end items-end">
               <div className="flex gap-2">
@@ -77,20 +109,64 @@ export default function Projects() {
   };
 
   const [loaded, setLoaded] = useState(false);
+  const { index } = useParams();
+
+  interface ExpandProps {
+    project: Project;
+  }
+
+  const ExpandProject = ({ project }: ExpandProps) => {
+    const { name, img, description } = project;
+    return (
+      <div className="fixed bg-black bg-opacity-75 inset-0 w-full h-full flex justify-center items-center z-30 px-[1rem] md:px-0">
+        <div className="w-full md:w-1/2 lg:w-[35%] relative">
+          <button
+            className="bg-color3 p-1 rounded-full absolute top-0 right-0 glowBox translate-x-[5px] translate-y-[-5px]"
+            onClick={() => navigate("/projects")}
+          >
+            <img src="/icons/close.svg" width={25} alt="" />
+          </button>
+          <div className="bg-color2 rounded-lg">
+            <div className="h-[300px]">
+              <img
+                src={`${img}`}
+                alt=""
+                className="rounded-t-lg object-cover w-full h-full"
+              />
+            </div>
+            <div className="h-[150px] pb-[1rem] overflow-auto custom-scrollbar relative">
+              <h1 className="px-[1rem] pt-[1rem] bg-color2 uppercase text-2xl glowText sticky top-0">
+                {name}
+              </h1>
+              <p className="px-[1rem]">{description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  const [expand, setExpand] = useState<Project | null>(null);
+  useEffect(() => {
+    const project = projects.find((project) => project.id === index);
+    if (project) {
+      setExpand(project);
+    } else {
+      setExpand(null);
+    }
+  }, [index]);
 
   return (
     <section id="projects" className="relative">
       {<ImageLoader sectionId="projects" setLoaded={setLoaded} />}
       <div className="min-h-screen w-full flex flex-col lg:flex-row px-[1rem] gap-4 pb-[6rem]">
         <ul className="grid gap-[1rem] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <Project />
-          <Project />
-          <Project />
-          <Project />
-          <Project />
+          {projects.map((project, index) => {
+            return <Project key={index} project={project} />;
+          })}
         </ul>
       </div>
       {loaded ? null : <Loading />}
+      {expand && <ExpandProject project={expand} />}
     </section>
   );
 }

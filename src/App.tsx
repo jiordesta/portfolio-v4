@@ -24,6 +24,7 @@ export default function App() {
           <Route path="/about/:section" Component={About} />
           <Route path="/contacts" Component={Contacts} />
           <Route path="/projects" Component={Projects} />
+          <Route path="/projects/:index" Component={Projects} />
           <Route path="/resume" Component={Resume} />
           <Route path="/services" Component={Services} />
           <Route path="/testimonials" Component={Testimonials} />
