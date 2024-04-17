@@ -1,0 +1,6 @@
+.list-with-bg-image {
+  background-image: url("/images/services1.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
