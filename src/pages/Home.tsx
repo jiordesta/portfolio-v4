@@ -119,8 +119,8 @@ export default function Home() {
     return (
       <div>
         <ul className="flex flex-col md:flex-row lg:flex-col justify-center items-center gap-2 glowText">
-          {projects.map((project) => {
-            return <Project {...project} />;
+          {projects.map((project, index) => {
+            return <Project key={index} {...project} />;
           })}
         </ul>
       </div>
