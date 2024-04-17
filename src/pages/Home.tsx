@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ImageLoader from "../utils/ImageLoader";
 import { Loading } from "../components/OverlayUIs";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const ResumeBtn = () => {
@@ -20,6 +21,7 @@ export default function Home() {
   };
 
   const OngoingProjects = () => {
+    const navigate = useNavigate();
     const projects = [
       {
         status: "ongoing-project",
@@ -48,6 +50,7 @@ export default function Home() {
       return (
         <li
           className="md:w-[50%] w-full lg:w-full cursor-pointer drop-shadow-lg"
+          onClick={() => navigate("/maintenance")}
           onMouseEnter={() => {
             setHovered(true);
           }}

@@ -44,39 +44,41 @@ export default function Services() {
         </div>
         <div className="w-full md:w-1/2 flex flex-col gap-[1rem]">
           <div className="p-[1rem]">
-            <h1 className="text-2xl glowText">Lorem ipsum dolor sit amet.</h1>
-            <p>I develop responsive and user friendly websites.</p>
+            <h1 className="text-2xl glowText">
+              I develop responsive and user friendly websites.
+            </h1>
+            <p>Here are the list of websites that I can create:</p>
           </div>
           <div className="w-full h-full flex justify-center items-center">
-            <ul className="w-full text-center grid grid-cols-1 sm:grid-cols-2 gap-[1rem] p-[1rem]">
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+            <ul className="servicesscontainer w-full text-center grid grid-cols-1 sm:grid-cols-2 gap-[1rem] p-[1rem]">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">E-commerce stores</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Blogs</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Portfolio</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Business websites</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Online magazines</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Community forums</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Educational websites</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Travel blogs</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Website Builder</h1>
               </li>
-              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg">
+              <li className="bg-color2 p-[1rem] -skew-x-12 rounded-lg transition-all ease-in-out duration-300 ">
                 <h1 className="skew-x-12">Portfolio Builder</h1>
               </li>
             </ul>

@@ -45,14 +45,13 @@ export default function Projects() {
     const [linkHover, setLinkHover] = useState(false);
     return (
       <div
-        onClick={() => navigate(`/projects/${id}`)}
         className={`h-[450px] bg-color2 rounded-xl ${
           hovered ? "p-1 bg-opacity-5" : "p-2 bg-opacity-25"
         } drop-shadow-lg transition-all ease-in-out duration-300 cursor-pointer`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        <div className="h-[60%]">
+        <div className="h-[60%]" onClick={() => navigate(`/projects/${id}`)}>
           <img
             src={`${img}`}
             className="object-cover w-full h-full flex justify-center items-center rounded-lg"

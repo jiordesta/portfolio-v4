@@ -7,6 +7,7 @@ import Resume from "./pages/Resume";
 import Services from "./pages/Services";
 import Testimonials from "./pages/Testimonials";
 import { Active, Loader, Navigation, Timer } from "./components/OverlayUIs";
+import Maintenance from "./pages/Maintenance";
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/resume" Component={Resume} />
           <Route path="/services" Component={Services} />
           <Route path="/testimonials" Component={Testimonials} />
+          <Route path="/maintenance" Component={Maintenance} />
         </Routes>
       </Router>
     </div>

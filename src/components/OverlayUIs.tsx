@@ -91,6 +91,9 @@ export const Navigation = () => {
   const handleNavigate = (path: String) => {
     navigate(`/${path}`);
   };
+
+  if (location.pathname === "/maintenance") return;
+
   return (
     <nav className="fixed bottom-[1rem] w-full flex justify-center drop-shadow-lg z-20">
       <ul className="flex gap-2 bg-color2 rounded-full p-1 bg-opacity-25 navcontainer">
