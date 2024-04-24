@@ -5,8 +5,15 @@ import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const ResumeBtn = () => {
+    const url =
+      "https://drive.google.com/file/d/1P1u5hw_1oTZR4gJBENNhM8TkqarX6xj4/view?usp=sharing";
     return (
-      <button className="p-1 flex items-center rounded-full drop-shadow-lg bg-color2 bg-opacity-25">
+      <button
+        className="p-1 flex items-center rounded-full drop-shadow-lg bg-color2 bg-opacity-25"
+        onClick={() => {
+          window.open(`${url}`, "_blank");
+        }}
+      >
         <div>
           <img
             src="/icons/resume.svg"

@@ -3,35 +3,6 @@ import ImageLoader from "../utils/ImageLoader";
 import { Loading } from "../components/OverlayUIs";
 
 export default function Services() {
-  const Introduction = () => {
-    return (
-      <div className="flex gap-[1rem] md:h-[500px] flex-col-reverse md:flex-row">
-        <div className="w-full md:w-1/2 flex flex-col justify-center items-end gap-[1rem]">
-          <h1 className="text-2xl md:text-4xl text-center md:text-end font-bold uppercase">
-            Looking for a skilled <span className="glowText">FULL-STACK </span>
-            Web developer?
-          </h1>
-          <p className="text-center md:text-end ">
-            Look no further! I specialize in creating dynamic and responsive web
-            applications tailored to your unique needs. With years of experience
-            and a passion for coding, I am dedicated to delivering high-quality
-            solutions that exceed expectations. Contact me today to discuss your
-            project requirements and take your web development to the next
-            level.
-          </p>
-          <div className="flex">
-            <button className="bg-color2 bg-opacity-50 p-2 rounded-lg w-full">
-              Contact now!
-            </button>
-          </div>
-        </div>
-        <div className="w-full md:w-1/2 flex justify-center">
-          <img src="/images/services.jpg" className="rounded-lg" alt="" />
-        </div>
-      </div>
-    );
-  };
-
   const Offers = () => {
     return (
       <div className="flex gap-[1rem] flex-col md:flex-row">
@@ -45,7 +16,7 @@ export default function Services() {
         <div className="w-full md:w-1/2 flex flex-col gap-[1rem]">
           <div className="p-[1rem]">
             <h1 className="text-2xl glowText">
-              I develop responsive and user friendly websites.
+              I develop responsive and user friendly fullstack websites.
             </h1>
             <p>Here are the list of websites that I can create:</p>
           </div>
@@ -94,7 +65,6 @@ export default function Services() {
     <section id="services" className="relative">
       {<ImageLoader sectionId="services" setLoaded={setLoaded} />}
       <div className="min-h-screen w-full flex flex-col px-[1rem] gap-4 pb-[6rem]">
-        <Introduction />
         <Offers />
       </div>
       {loaded ? null : <Loading />}

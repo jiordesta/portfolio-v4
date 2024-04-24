@@ -5,19 +5,26 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function Projects() {
   const navigate = useNavigate();
+
   const projects = [
     {
       id: "1",
       name: "RESAYKEL",
       description:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum illum deserunt quas? Ratione dignissimos maxime est autem quas officia consequuntur earum necessitatibus reprehenderit, delectus ad.",
+        "Ecommerce website where you can buy and sell recycled products.",
       status: "deployed",
-      repo: {
-        link: "",
-        secured: false,
-      },
-      link: "",
+      repo: "https://github.com/jiordesta/RESAYKEL",
+      link: "https://resaykel-client.onrender.com/",
       img: "/images/resaykel/1.PNG",
+    },
+    {
+      id: "2",
+      name: "TODOLIST",
+      description: "My first fullstack project developed using mern stack.",
+      status: "deployed",
+      repo: "https://github.com/jiordesta/Todolist",
+      link: "https://todolist-webapp-u0vv.onrender.com/",
+      img: "/images/todolist/1.PNG",
     },
   ];
 
@@ -26,10 +33,7 @@ export default function Projects() {
     name: String;
     description: String;
     status: String;
-    repo: {
-      link: String;
-      secured: boolean;
-    };
+    repo: String;
     link: String;
     img: String;
   };
@@ -39,7 +43,7 @@ export default function Projects() {
   }
 
   const Project = ({ project }: projectprops) => {
-    const { id, name, description, img } = project;
+    const { id, name, description, img, repo, link } = project;
     const [hovered, setHovered] = useState(false);
     const [gitHover, setGitHover] = useState(false);
     const [linkHover, setLinkHover] = useState(false);
@@ -72,6 +76,9 @@ export default function Projects() {
                   } transition-all ease-in-out duration-400 cursor-pointer`}
                   onMouseEnter={() => setGitHover(true)}
                   onMouseLeave={() => setGitHover(false)}
+                  onClick={() => {
+                    window.open(`${repo}`, "_blank");
+                  }}
                 >
                   <div className="bg-color3 p-1 rounded-full glowBox">
                     <img
@@ -91,6 +98,9 @@ export default function Projects() {
                   } transition-all ease-in-out duration-400 cursor-pointer`}
                   onMouseEnter={() => setLinkHover(true)}
                   onMouseLeave={() => setLinkHover(false)}
+                  onClick={() => {
+                    window.open(`${link}`, "_blank");
+                  }}
                 >
                   <div className="bg-color3 p-1 rounded-full glowBox">
                     <img src="/icons/visit.svg" width={25} height={25} alt="" />

@@ -220,7 +220,7 @@ export default function About() {
           <Award />
           <Internship />
         </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center pt-[1rem]">
           <Skills />
         </div>
       </div>
