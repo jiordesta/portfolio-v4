@@ -139,6 +139,23 @@ export const Navigation = () => {
             />
           </button>
         </li>
+      </ul>
+    </nav>
+  );
+};
+
+export const Controllers = () => {
+  return (
+    <div className="sticky top-[1rem]">
+      <div className="flex justify-center">
+        <Timer />
+      </div>
+    </div>
+  );
+};
+
+/*
+
         <li className="navlink">
           <button
             className={`${navlinks} ${
@@ -167,17 +184,4 @@ export const Navigation = () => {
             />
           </button>
         </li>
-      </ul>
-    </nav>
-  );
-};
-
-export const Controllers = () => {
-  return (
-    <div className="sticky top-[1rem]">
-      <div className="flex justify-center">
-        <Timer />
-      </div>
-    </div>
-  );
-};
+*/
